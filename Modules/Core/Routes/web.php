@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +11,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/clear', function () {
-    Artisan::call('route:cache');
-    // Artisan::call('config:cache');
-    // Artisan::call('cache:clear');
-    // Artisan::call('view:clear');
-    return 'Cleared';
+Route::prefix('core')->group(function () {
+    Route::get('/', 'CoreController@index');
 });
